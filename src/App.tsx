@@ -1,9 +1,29 @@
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import RightRail from './components/RightRail'
+import { useUserQuery } from './hooks/useUserQuery'
 
 function App() {
+  const { data: user, isLoading, isError, error } = useUserQuery()
   const [isOpen, setIsOpen] = useState(false)
+
+  if (isLoading) {
+    return (
+      <div className='p-4 font-semibold text-2xl text-[#757575]'>
+        Loading user...
+      </div>
+    )
+  }
+
+  if (isError) {
+    return (
+      <div className='p-4 font-semibold text-2xl text-red-500'>
+        {error instanceof Error ? error.message : 'Failed to load user.'}
+      </div>
+    )
+  }
+
+  const isPremiumUser = user?.premium === true
 
   return (
     <div className='md:mr-[350px]'>
@@ -21,7 +41,11 @@ function App() {
 
       <main className='px-10 py-5'>Main Content</main>
 
-      <RightRail isOpen={isOpen} onClose={() => setIsOpen(false)} />
+      <RightRail
+        isPremiumUser={isPremiumUser}
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+      />
     </div>
   )
 }

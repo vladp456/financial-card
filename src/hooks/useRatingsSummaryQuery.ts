@@ -6,6 +6,8 @@ export const useRatingsSummaryQuery = (isPremiumUser: boolean) => {
   return useQuery<RatingsSummary>({
     queryKey: ['ratings-summary'],
     queryFn: getRatingsSummary,
-    enabled: isPremiumUser
+    enabled: isPremiumUser,
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
   })
 }

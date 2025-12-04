@@ -1,40 +1,33 @@
 import { lazy, Suspense } from 'react'
 import { X } from 'lucide-react'
-import { useUserQuery } from '../hooks/useUserQuery'
+import TableSkeleton from './shared/TableSkeleton'
 
-const RatingsSummary = lazy(() => import('./RatingsSummary/RatingsSummary'))
+const RatingsSummary = lazy(() => import('./RatingsSummary'))
+const FactorGrades = lazy(() => import('./FactorGrades'))
 
 interface Props {
-  isOpen?: boolean
-  onClose?: () => void
+  isPremiumUser: boolean
+  isOpen: boolean
+  onClose: () => void
 }
 
-const RightRail = ({ isOpen = false, onClose }: Props) => {
-  const { data: user, isLoading, isError, error } = useUserQuery()
-  const isPremiumUser = user?.premium ?? false
-
+const RightRail = ({
+  isPremiumUser = false,
+  isOpen = false,
+  onClose
+}: Props) => {
   const content = (
-    <div>
-      {isLoading && (
-        <div className='p-4 font-semibold text-2xl text-[#757575]'>
-          Loading...
-        </div>
-      )}
-
-      {isError && (
-        <div className='p-4 font-semibold text-2xl text-red-500'>
-          {error instanceof Error ? error.message : 'Something went wrong.'}
-        </div>
-      )}
-
+    <div className='flex flex-col gap-4'>
       {isPremiumUser && (
-        <Suspense
-          fallback={
-            <div className='h-[170px] bg-white shadow animate-pulse w-full' />
-          }
-        >
-          <RatingsSummary isPremiumUser={isPremiumUser} />
-        </Suspense>
+        <>
+          <Suspense fallback={<TableSkeleton rowCount={3} />}>
+            <RatingsSummary isPremiumUser={isPremiumUser} />
+          </Suspense>
+
+          <Suspense fallback={<TableSkeleton rowCount={5} />}>
+            <FactorGrades isPremiumUser={isPremiumUser} />
+          </Suspense>
+        </>
       )}
     </div>
   )
