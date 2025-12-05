@@ -7,22 +7,6 @@ function App() {
   const { data: user, isLoading, isError, error } = useUserQuery()
   const [isOpen, setIsOpen] = useState(false)
 
-  if (isLoading) {
-    return (
-      <div className='p-4 font-semibold text-2xl text-[#757575]'>
-        Loading user...
-      </div>
-    )
-  }
-
-  if (isError) {
-    return (
-      <div className='p-4 font-semibold text-2xl text-red-500'>
-        {error instanceof Error ? error.message : 'Failed to load user.'}
-      </div>
-    )
-  }
-
   const isPremiumUser = user?.premium === true
 
   return (
@@ -32,6 +16,7 @@ function App() {
 
         <button
           type='button'
+          aria-label={isOpen ? 'Close' : 'Open'}
           className='block md:hidden'
           onClick={() => setIsOpen(prev => !prev)}
         >
@@ -39,7 +24,19 @@ function App() {
         </button>
       </header>
 
-      <main className='px-10 py-5'>Main Content</main>
+      <main className='px-10 py-5'>
+        {isLoading && (
+          <div className='font-semibold text-2xl text-[#757575]'>
+            Loading user...
+          </div>
+        )}
+
+        {isError && (
+          <div className='font-semibold text-2xl text-red-500'>
+            {error instanceof Error ? error.message : 'Failed to load user.'}
+          </div>
+        )}
+      </main>
 
       <RightRail
         isPremiumUser={isPremiumUser}

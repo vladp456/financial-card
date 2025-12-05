@@ -9,9 +9,9 @@ interface Props {
 const FactorGrades = ({ isPremiumUser = false }: Props) => {
   const { data, isLoading, isError } = useFactorGradesQuery(isPremiumUser)
 
-  if (isLoading) return <TableSkeleton rowCount={5} />
+  if (isLoading) return <TableSkeleton rowCount={6} className='mb-4' />
 
-  if (isError || !data) return <CardError minHeight={170} />
+  if (isError || !data || !data.now) return <CardError minHeight={255} />
 
   const { now, threeM, sixM } = data
   const factorNames = Object.keys(now)
@@ -39,9 +39,9 @@ const FactorGrades = ({ isPremiumUser = false }: Props) => {
               className='[&_td]:font-semibold [&_td:not(:first-child)]:text-center'
             >
               <td className='py-1 pr-2 text-[#3769D4]'>{factor}</td>
-              <td className='py-1 px-2'>{now[factor] ?? '-'}</td>
-              <td className='py-1 px-2'>{threeM[factor] ?? '-'}</td>
-              <td className='py-1 px-2'>{sixM[factor] ?? '-'}</td>
+              <td className='py-1 px-2'>{now?.[factor] ?? '-'}</td>
+              <td className='py-1 px-2'>{threeM?.[factor] ?? '-'}</td>
+              <td className='py-1 px-2'>{sixM?.[factor] ?? '-'}</td>
             </tr>
           ))}
         </tbody>

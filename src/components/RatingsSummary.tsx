@@ -9,7 +9,7 @@ interface Props {
 const RatingsSummary = ({ isPremiumUser = false }: Props) => {
   const { data, isLoading, isError } = useRatingsSummaryQuery(isPremiumUser)
 
-  if (isLoading) return <TableSkeleton rowCount={3} />
+  if (isLoading) return <TableSkeleton rowCount={3} className='mb-6' />
 
   if (isError || !data) return <CardError minHeight={170} />
 
