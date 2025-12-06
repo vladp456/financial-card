@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { X } from 'lucide-react'
 import TableSkeleton from './shared/TableSkeleton'
 
@@ -17,6 +17,18 @@ const RightRail = ({
   isOpen = false,
   onClose
 }: Props) => {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
+
   const content = (
     <div className='flex flex-col gap-4'>
       {isPremiumUser && (
@@ -39,16 +51,19 @@ const RightRail = ({
 
   return (
     <>
-      <aside className='hidden lg:block h-screen w-[350px] bg-[#F5F2F1] p-4 fixed right-0 top-0 overflow-y-auto'>
+      <aside className='hidden lg:block fixed right-0 top-0 h-screen w-[350px] bg-[#F5F2F1] p-4 overflow-y-auto overscroll-contain'>
         {content}
       </aside>
 
       {isOpen && (
-        <div className='fixed inset-0 z-50 bg-black/20' onClick={onClose}>
+        <div
+          className='lg:hidden fixed inset-0 z-50 bg-black/20'
+          onClick={onClose}
+        >
           <div
             role='dialog'
             aria-modal='true'
-            className='fixed top-0 right-0 h-full w-80 bg-[#F5F2F1] p-4 overflow-y-auto'
+            className='fixed top-0 right-0 h-full w-80 bg-[#F5F2F1] p-4 overflow-y-auto overscroll-contain shadow-xl'
             onClick={e => e.stopPropagation()}
           >
             <div className='flex justify-end mt-1 mb-5'>
