@@ -1,1 +1,0 @@
-import{j as e}from"./index-BpMHluyX.js";const a=({minHeight:s,message:t="Unable to load data."})=>e.jsx("div",{className:"p-5 bg-white shadow w-full flex items-center justify-center",style:{minHeight:s},children:e.jsx("span",{className:"text-red-500",children:t})});export{a as C};
