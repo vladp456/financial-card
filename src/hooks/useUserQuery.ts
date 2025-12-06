@@ -6,9 +6,9 @@ export const useUserQuery = () => {
   return useQuery<User>({
     queryKey: ['user'],
     queryFn: getUser,
-    staleTime: 1000 * 60 * 60 * 24, // 24 hours
+    staleTime: Infinity,
     refetchOnWindowFocus: false,
-    refetchOnMount: false,
+    refetchOnMount: true,
     refetchOnReconnect: false
   })
 }

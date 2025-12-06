@@ -15,7 +15,7 @@ const RatingsSummary = ({ isPremiumUser = false }: Props) => {
 
   return (
     <div className='p-4 bg-white'>
-      <h2 className='font-semibold text-2xl mb-2 text-[#757575]'>
+      <h2 className='font-semibold text-2xl mb-2 text-gray'>
         Ratings Summary
       </h2>
 
@@ -23,7 +23,7 @@ const RatingsSummary = ({ isPremiumUser = false }: Props) => {
         <tbody>
           {Object.entries(data).map(([key, item]) => (
             <tr key={key} className='[&_td]:font-semibold'>
-              <td className='py-1 pr-2 text-[#3769D4]'>
+              <td className='py-1 pr-2 text-blue'>
                 {key.replace('_', ' ')}
               </td>
               <td className='py-1 px-2'>{item.rating}</td>

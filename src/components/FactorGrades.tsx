@@ -18,13 +18,11 @@ const FactorGrades = ({ isPremiumUser = false }: Props) => {
 
   return (
     <div className='p-4 bg-white'>
-      <h2 className='font-semibold text-2xl mb-2 text-[#757575]'>
-        Factor Grades
-      </h2>
+      <h2 className='font-semibold text-2xl mb-2 text-gray'>Factor Grades</h2>
 
       <table className='w-full text-left'>
         <thead>
-          <tr className='text-[#757575] [&_th]:font-normal text-xs'>
+          <tr className='text-gray [&_th]:font-normal text-xs'>
             <th className='py-1 px-2'></th>
             <th className='py-1 px-2'>Now</th>
             <th className='py-1 px-2'>3M ago</th>
@@ -38,7 +36,7 @@ const FactorGrades = ({ isPremiumUser = false }: Props) => {
               key={factor}
               className='[&_td]:font-semibold [&_td:not(:first-child)]:text-center'
             >
-              <td className='py-1 pr-2 text-[#3769D4]'>{factor}</td>
+              <td className='py-1 pr-2 text-blue'>{factor}</td>
               <td className='py-1 px-2'>{now?.[factor] ?? '-'}</td>
               <td className='py-1 px-2'>{threeM?.[factor] ?? '-'}</td>
               <td className='py-1 px-2'>{sixM?.[factor] ?? '-'}</td>

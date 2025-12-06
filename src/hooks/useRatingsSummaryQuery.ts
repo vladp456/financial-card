@@ -7,9 +7,9 @@ export const useRatingsSummaryQuery = (isPremiumUser: boolean) => {
     queryKey: ['ratings-summary'],
     queryFn: getRatingsSummary,
     enabled: isPremiumUser,
-    staleTime: 1000 * 60 * 60 * 24, // 24 hours
+    staleTime: Infinity,
     refetchOnWindowFocus: false,
-    refetchOnMount: false,
+    refetchOnMount: true,
     refetchOnReconnect: false
   })
 }

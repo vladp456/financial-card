@@ -26,7 +26,7 @@ function App() {
 
       <main className='px-10 py-5'>
         {isLoading && (
-          <div className='font-semibold text-2xl text-[#757575]'>
+          <div className='font-semibold text-2xl text-gray'>
             Loading user...
           </div>
         )}

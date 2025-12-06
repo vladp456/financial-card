@@ -1,31 +1,16 @@
-import type { FactorGradesNormalized } from '../types/factorGrades'
+import type { FactorGradesNormalized, LetterGrade } from '../types/factorGrades'
 
 export const normalizeNow = (
-  data: Record<string, { current: string }>
-): FactorGradesNormalized => {
-  const result: FactorGradesNormalized = {}
-
-  for (const key in data) {
-    result[key] = data[key].current as any
-  }
-
-  return result
-}
+  data: Record<string, { current: LetterGrade }>
+): FactorGradesNormalized =>
+  Object.fromEntries(
+    Object.entries(data).map(([key, value]) => [key, value.current])
+  )
 
 export const normalize3M = (
-  data: Record<string, string>
-): FactorGradesNormalized => {
-  return data as FactorGradesNormalized
-}
+  data: Record<string, LetterGrade>
+): FactorGradesNormalized => data
 
 export const normalize6M = (data: {
-  data: [string, string][]
-}): FactorGradesNormalized => {
-  const result: FactorGradesNormalized = {}
-
-  data.data.forEach(([key, value]) => {
-    result[key] = value as any
-  })
-
-  return result
-}
+  data: [string, LetterGrade][]
+}): FactorGradesNormalized => Object.fromEntries(data.data)

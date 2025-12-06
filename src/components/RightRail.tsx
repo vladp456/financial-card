@@ -44,12 +44,7 @@ const RightRail = ({
       </aside>
 
       {isOpen && (
-        <div
-          className='fixed inset-0 z-50 overflow-y-auto'
-          role='dialog'
-          aria-modal='true'
-          aria-labelledby='drawer-title'
-        >
+        <div className='fixed inset-0 z-50 overflow-y-auto'>
           <div
             className={`fixed top-0 right-0 h-full w-80 bg-[#F5F2F1] p-4 overflow-y-auto transform transition-transform duration-300 ease-out ${
               isOpen ? 'translate-x-0' : 'translate-x-full'

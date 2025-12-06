@@ -6,9 +6,9 @@ export const useQuantRankingQuery = () => {
   return useQuery<RankingDetails>({
     queryKey: ['quant-ranking'],
     queryFn: getQuantRanking,
-    staleTime: 1000 * 60 * 60 * 24, // 24 hours
+    staleTime: Infinity,
     refetchOnWindowFocus: false,
-    refetchOnMount: false,
+    refetchOnMount: true,
     refetchOnReconnect: false
   })
 }

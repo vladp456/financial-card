@@ -12,7 +12,8 @@ export const useFactorGrades6MQuery = (isPremiumUser: boolean) => {
     },
     enabled: isPremiumUser,
     refetchOnWindowFocus: false,
-    refetchOnMount: false,
+    refetchOnMount: true,
+    refetchOnReconnect: false,
     refetchInterval: 360000 // Poll every 6 minutes
   })
 }

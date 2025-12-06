@@ -12,7 +12,7 @@ const QuantRanking = () => {
 
   return (
     <div className='p-4 bg-white'>
-      <h2 className='font-semibold text-2xl mb-2 text-[#757575]'>
+      <h2 className='font-semibold text-2xl mb-2 text-gray'>
         Quant Ranking
       </h2>
 
@@ -35,7 +35,7 @@ const QuantRanking = () => {
         </tbody>
       </table>
 
-      <a href='#' className='text-[#3769D4] font-semibold'>
+      <a href='#' className='text-blue font-semibold'>
         Quant Ratings Beat The Market &#187;
       </a>
     </div>
