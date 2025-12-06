@@ -10,14 +10,14 @@ function App() {
   const isPremiumUser = user?.premium === true
 
   return (
-    <div className='md:mr-[350px]'>
+    <div className='lg:mr-[350px]'>
       <header className='flex items-center justify-between p-4 lg:px-10 lg:py-5 bg-white shadow-md'>
         <h1 className='text-2xl font-bold'>App Title</h1>
 
         <button
           type='button'
           aria-label={isOpen ? 'Close' : 'Open'}
-          className='block md:hidden'
+          className='block lg:hidden'
           onClick={() => setIsOpen(prev => !prev)}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
