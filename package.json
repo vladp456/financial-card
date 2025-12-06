@@ -1,5 +1,6 @@
 {
   "name": "financial-card",
+  "homepage": "https://vladp456.github.io/financial-card/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,11 +9,14 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.17",
     "@tanstack/react-query": "^5.90.11",
+    "gh-pages": "^6.3.0",
     "lucide-react": "^0.555.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
