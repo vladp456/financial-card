@@ -19,7 +19,7 @@ const QuantRanking = () => {
       <table className='w-full text-left mb-4'>
         <tbody className='[&_tr:not(:last-child)]:border-b [&_tr]:border-gray-300'>
           <QuantRankingTableRow label='Sector' value={data.sector} />
-          <QuantRankingTableRow label='Industry' value={data.industry} />
+          <QuantRankingTableRow label='Industry' value={data.industry} className="gap-7" />
           <QuantRankingTableRow
             label='Ranked Overall'
             value={data.rankings.overall}
